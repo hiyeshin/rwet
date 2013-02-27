@@ -23,19 +23,18 @@ while True:
 		monologue["CHARLOTTE"].append(next_line)
 
 #below is the value lists based on key name
-bob = monologue["BOB"]
-charlotte = monologue["CHARLOTTE"]
 
 #Let's make the order of list element random
-random.shuffle(bob)
-random.shuffle(charlotte)
+random.shuffle(monologue["BOB"])
+random.shuffle(monologue["CHARLOTTE"])
 
 #recreate the random conversation. result varies every time when the code running
-print bob[1] 
-print charlotte[0]
-print bob[2] 
-print charlotte[1]
-print bob[3] 
-print charlotte[2]
-print bob[4] 
-print charlotte[3]
+print monologue["BOB"][1] 
+print monologue["CHARLOTTE"][0]
+print monologue["BOB"][2] 
+print monologue["CHARLOTTE"][1]
+print monologue["BOB"][3] 
+print monologue["CHARLOTTE"][2]
+print monologue["BOB"][4] 
+print monologue["CHARLOTTE"][3]
+
