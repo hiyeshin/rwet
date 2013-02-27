@@ -12,8 +12,6 @@ while True:
 	line = line.strip("\n")
 	line = line.strip(" ")
 
-	print line
-
 	if "BOB" in line:
 		next_line = sys.stdin.readline()
 		next_line = next_line.strip()
@@ -24,12 +22,15 @@ while True:
 		next_line = next_line.strip()
 		monologue["CHARLOTTE"].append(next_line)
 
+#below is the value lists based on key name
 bob = monologue["BOB"]
 charlotte = monologue["CHARLOTTE"]
 
+#Let's make the order of list element random
 random.shuffle(bob)
 random.shuffle(charlotte)
 
+#recreate the random conversation. result varies every time when the code running
 print bob[1] 
 print charlotte[0]
 print bob[2] 
