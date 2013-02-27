@@ -3,22 +3,53 @@ import sys
 
 monologue = {"BOB":[], "CHARLOTTE":[]}
 
-for line in sys.stdin:
+# for line in sys.stdin:
+# 	line = line.strip("\n")/
+# 	line = line.strip(" ")
+	
+# 	line_words = line.split(" ")
+
+	
+
+# 	for word in line_words:
+# 		if "BOB" == word:			
+# 			monologue["BOB"].append(line)
+# 			# how can I print next line?
+# 			# range()?
+
+
+# 		elif "CHARLOTTE" == word:
+# 			monologue["CHARLOTTE"].append(line)
+
+# 		else:
+# 			monologue["BOB"] = [line]
+
+
+# #print monologue["BOB"]
+# #print monologue["CHARLOTTE"]
+# 	print line
+
+while True:
+	line = sys.stdin.readline()
+	
+
+	if line == "":
+		break
+
+	line = line.strip("\n")
 	line = line.strip(" ")
-	line = line.strip("\n") # strip the each line by line
-	line_words = line.split(" ") #create the list of word by splitting anything btwn space
-	#new_line = line_words.join()
 
-	for word in line_words:
-		if "BOB" == word:			
-			monologue["BOB"].append(line)
-
-		elif "CHARLOTTE" == word:
-			monologue["CHARLOTTE"].append(line)
-
-		else:
-			monologue["BOB"] = [line]
-
-# print line
 	print line
 
+	if "BOB" in line:
+		next_line = sys.stdin.readline()
+		next_line = next_line.strip()
+		monologue["BOB"].append(next_line)
+
+	elif "CHARLOTTE" in line:
+		next_line = sys.stdin.readline()
+		next_line = next_line.strip()
+		monologue["CHARLOTTE"].append(next_line)
+
+charlotte = monologue["CHARLOTTE"]
+print charlotte[3:9]
