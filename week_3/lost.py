@@ -1,38 +1,11 @@
 import sys
-#import random
+import random
 
-monologue = {"BOB":[], "CHARLOTTE":[]}
-
-# for line in sys.stdin:
-# 	line = line.strip("\n")/
-# 	line = line.strip(" ")
-	
-# 	line_words = line.split(" ")
-
-	
-
-# 	for word in line_words:
-# 		if "BOB" == word:			
-# 			monologue["BOB"].append(line)
-# 			# how can I print next line?
-# 			# range()?
-
-
-# 		elif "CHARLOTTE" == word:
-# 			monologue["CHARLOTTE"].append(line)
-
-# 		else:
-# 			monologue["BOB"] = [line]
-
-
-# #print monologue["BOB"]
-# #print monologue["CHARLOTTE"]
-# 	print line
+monologue = {"BOB":[], "CHARLOTTE":[]} #this is a dictionary the dialogues are sorted by speakers
 
 while True:
 	line = sys.stdin.readline()
 	
-
 	if line == "":
 		break
 
@@ -51,5 +24,17 @@ while True:
 		next_line = next_line.strip()
 		monologue["CHARLOTTE"].append(next_line)
 
+bob = monologue["BOB"]
 charlotte = monologue["CHARLOTTE"]
-print charlotte[3:9]
+
+random.shuffle(bob)
+random.shuffle(charlotte)
+
+print bob[1] 
+print charlotte[0]
+print bob[2] 
+print charlotte[1]
+print bob[3] 
+print charlotte[2]
+print bob[4] 
+print charlotte[3]
