@@ -50,10 +50,18 @@ def medpoem():
 
 
 	#Let's have fun with suffix!
-	if re.findall(r'[(?:a-zA-Z)+Oo+]', sources[2]) == True:
+	if re.findall(r'(?:[a-zA-Z])+o+', sources[2]) == True:
 		sources[2] = sources[2] + random.choice(suffix)
 	else:
 		sources[2] = sources[2] + 'o' + random.choice(suffix)
+
+
+	#Now it's for prefix!
+	if re.findall(r'Oo(?:[a-zA-Z])+]', sources[2]) == True:
+		sources[2] = random.choice(prefix) + sources[2]
+	else:
+		sources[2] = random.choice(prefix) + 'o' + sources[2]
+
 
 	print sources[0]
 	print sources[1]
