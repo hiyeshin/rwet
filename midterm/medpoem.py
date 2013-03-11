@@ -13,14 +13,14 @@ def shuffle_shuffle(filename):
 		all_words.append(word)
 
 	random.shuffle(all_words)
-	return all_words[:3]
+	return all_words
 
 
 #this will spit out one random prefix
 prefix = shuffle_shuffle("prefix.txt")
 
 #this will spit out one random suffix
-suffix = shuffle_shuffle("suffix.txt")
+suffix = shuffle_shuffle("suffix.txt")[0:3]
 
 
 #let's make a random poem by printing 3 * 3 lines.
@@ -31,6 +31,7 @@ sources = []
 def liner():	
 	for line in sys.stdin:
 		line = line.strip()
+		line = line.lower()
 		sentences = line.split(". ")
 
 		for s in sentences:
@@ -45,15 +46,15 @@ def liner():
 
 
 def medpoem():
-	# for e in sources[0:3]:
-	# 	print e
+	#if sources[2][-1] == r'[\.\, ]':
+	sources[2] = sources[2][ :-1]
 
 
 	#Let's have fun with suffix!
 	if re.findall(r'(?:[a-zA-Z])+o+', sources[2]) == True:
-		sources[2] = sources[2] + random.choice(suffix)
+		sources[2] = sources[2] + random.choice(suffix) + '.'
 	else:
-		sources[2] = sources[2] + 'o' + random.choice(suffix)
+		sources[2] = sources[2] + 'o' + random.choice(suffix) + '.'
 
 
 	#Now it's for prefix!
@@ -66,16 +67,6 @@ def medpoem():
 	print sources[0]
 	print sources[1]
 	print sources[2]
-
-
-
-	# words = line.split(" ")
-
-	# for p in re.findall(r'[Oo+(?:a-zA-Z)+]', line):
-	# 	p.sub()
-
-
-
 
 
 
