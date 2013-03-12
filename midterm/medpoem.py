@@ -1,3 +1,9 @@
+# Adam's suggestion
+# 1. Use suffixes more often because it set the poem's tone more interestingly
+# 2. Exclude some stopwords by filtering the stopword lists
+# 3. Attach prefix only to the word that has a minimum length
+
+
 import sys
 import re
 import random
@@ -46,7 +52,6 @@ def liner():
 
 
 def medpoem():
-	#if sources[2][-1] == r'[\.\, ]':
 	sources[2] = sources[2][ :-1]
 
 
@@ -64,7 +69,7 @@ def medpoem():
 		sources[2] = random.choice(prefix) + 'o' + sources[2]
 
 
-	print sources[0]
+	print sources[0][0].upper() + sources[0][1: ]
 	print sources[1]
 	print sources[2]
 
@@ -74,10 +79,13 @@ def medpoem():
 print "\n"
 liner() #strip line and shuffle!
 medpoem() # make a structure of 3*3
+
 print "\n" # so I can rest a while
 liner()
 medpoem()
+
 print "\n"
 liner()
 medpoem()
+
 print "\n"
