@@ -12,7 +12,6 @@ import random
 #create the function that spits random one word in pre/suffix text files
 def shuffle_shuffle(filename):
 	all_words = []
-	#chosen_three = []
 
 	for line in open(filename):
 		word = line.strip()
@@ -26,7 +25,10 @@ def shuffle_shuffle(filename):
 prefix = shuffle_shuffle("prefix.txt")
 
 #this will spit out one random suffix
-suffix = shuffle_shuffle("suffix.txt")[0:3]
+suffix = shuffle_shuffle("suffix.txt")
+
+#this is for rhyme. I am choosing only three suffix to make rhyme in every last line of the paragraph
+rhyme = shuffle_shuffle("suffix.txt")[0:3]
 
 
 #let's make a random poem by printing 3 * 3 lines.
@@ -48,28 +50,38 @@ def liner():
 
 	random.shuffle(sources)
 	return sources
-	#print sources[0:10]
+
+
+def last_word(string, list):
+	string = string[ :-1]
+
+	if re.findall(r'(?:[a-zA-Z])+o+', string) == True:
+		string = string + random.choice(list) + '.'
+	else:
+		string = string + 'o' + random.choice(list) + '.'
+
+	return string
+
+
+def first_word(string, list):
+	#string = string[ :-1]
+
+	if re.findall(r'Oo(?:[a-zA-Z])+', string) == True:
+		string = random.choice(list) + string
+	else:
+		string = random.choice(list) + 'o'+ string
+
+	return string[0].upper() + string[1: ]
 
 
 def medpoem():
-	sources[2] = sources[2][ :-1]
+	
+	sources[0] = last_word(sources[0], suffix)
+	sources[1] = first_word(sources[1], prefix)
+	sources[2] = last_word(sources[2], rhyme)
+	sources[2] = first_word(sources[2], prefix)
 
-
-	#Let's have fun with suffix!
-	if re.findall(r'(?:[a-zA-Z])+o+', sources[2]) == True:
-		sources[2] = sources[2] + random.choice(suffix) + '.'
-	else:
-		sources[2] = sources[2] + 'o' + random.choice(suffix) + '.'
-
-
-	#Now it's for prefix!
-	if re.findall(r'Oo(?:[a-zA-Z])+]', sources[2]) == True:
-		sources[2] = random.choice(prefix) + sources[2]
-	else:
-		sources[2] = random.choice(prefix) + 'o' + sources[2]
-
-
-	print sources[0][0].upper() + sources[0][1: ]
+	print sources[0]
 	print sources[1]
 	print sources[2]
 
