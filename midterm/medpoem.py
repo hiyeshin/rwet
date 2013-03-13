@@ -1,7 +1,7 @@
 # Adam's suggestion
 # 1. Use suffixes more often because it set the poem's tone more interestingly :: checked!
-# 2. Exclude some stopwords by filtering the stopword lists #
-# 3. Attach prefix only to the word that has a minimum length #
+# 2. Exclude some stopwords by filtering the stopword lists :: not this time
+# 3. Attach prefix only to the word that has a minimum length ::not this time
 
 import sys
 import re
@@ -35,21 +35,14 @@ rhyme = shuffle_shuffle("suffix.txt")[0:3]
 #function for creating the random lines
 sources = []
 
-delimeters = r"[\.\,]"
-
 def liner():	
 	for line in sys.stdin:
 		line = line.strip()
 		line = line.lower()
-		#sentences = line.split(delimeters)
-		#sentences
-		sentences = line.split(", ")
-		# sentences = line.split("\( ")
-		# sentences = line.split("\) ")
-
+		sentences = line.split(", ") #instead of using typical period, I decided to use comma to make it sound more interesting
+		
 		for s in sentences:
 			if len(s) == 0:
-
 				continue
 			else:
 				sources.append(s)
@@ -62,21 +55,22 @@ def last_word(string, list):
 	string = string[ :-1]
 
 	if re.findall(r'(?:[a-zA-Z])+o+', string) == True:
-		string = string + random.choice(list) + '.'
+		string = string + random.choice(list)
 	else:
-		string = string + 'o' + random.choice(list) + '.'
+		string = string + 'o' + random.choice(list)
 
 	return string
 
 
 def first_word(string, list):
-	#if re.findall(r'Oo(?:[a-zA-Z])+', string) == True:
+	string = string[ :-1]
+
 	if re.findall(r'\b[Oo]+[a-zA-Z]+', string) == True:
 		string = random.choice(list) + string
 	else:
 		string = random.choice(list) + 'o'+ string
 
-	return string[0].upper() + string[1: ]
+	return string
 
 
 def medpoem():
@@ -86,9 +80,9 @@ def medpoem():
 	sources[2] = last_word(sources[2], rhyme)
 	sources[2] = first_word(sources[2], prefix)
 
-	print sources[0][0].upper() + sources[0][1: ]
-	print sources[1]
-	print sources[2]
+	print sources[0][0].upper() + sources[0][1: ] + '.'
+	print sources[1][0].upper() + sources[1][1: ] + ','
+ 	print sources[2] + '.'
 
 
 
